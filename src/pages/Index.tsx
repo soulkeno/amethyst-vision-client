@@ -1,6 +1,6 @@
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
-import Features from "@/components/Features";
+import EnhancedFeatures from "@/components/EnhancedFeatures";
 import Download from "@/components/Download";
 
 const Index = () => {
@@ -9,7 +9,7 @@ const Index = () => {
       <Navigation />
       <main>
         <Hero />
-        <Features />
+        <EnhancedFeatures />
         <Download />
       </main>
     </div>

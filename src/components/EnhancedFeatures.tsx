@@ -1,7 +1,19 @@
+import { useState, useRef } from "react";
 import { Card } from "@/components/ui/card";
 import { Eye, MapPin, Users, TreePine, Crosshair, Anchor, Gem, Shield } from "lucide-react";
 
 const Features = () => {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>, cardIndex: number) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    setMousePosition({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    });
+  };
+
   const features = [
     {
       category: "Visual Enhancements",
@@ -84,23 +96,50 @@ const Features = () => {
 
               {/* Feature Grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {category.items.map((feature, featureIndex) => (
-                  <Card key={featureIndex} className="p-6 bg-gradient-card border border-amethyst/20 hover:border-amethyst/40 transition-all duration-300 group hover:shadow-lg hover:shadow-amethyst/10">
-                    <div className="flex items-start gap-4">
-                      <div className="p-2 rounded-lg bg-amethyst/10 group-hover:bg-amethyst/20 transition-colors">
-                        <feature.icon className="w-5 h-5 text-amethyst" />
-                      </div>
-                      <div className="flex-1">
-                        <h4 className="text-lg font-semibold text-foreground mb-2 group-hover:text-amethyst transition-colors">
-                          {feature.name}
-                        </h4>
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          {feature.description}
-                        </p>
-                      </div>
+                {category.items.map((feature, featureIndex) => {
+                  const cardIndex = categoryIndex * 10 + featureIndex;
+                  return (
+                    <div
+                      key={featureIndex}
+                      className="relative overflow-hidden"
+                      onMouseMove={(e) => handleMouseMove(e, cardIndex)}
+                      onMouseEnter={() => setHoveredCard(cardIndex)}
+                      onMouseLeave={() => setHoveredCard(null)}
+                    >
+                      {/* Mouse Following Glow Effect */}
+                      {hoveredCard === cardIndex && (
+                        <div
+                          className="absolute pointer-events-none z-10 w-32 h-32 rounded-full opacity-30 transition-all duration-300 ease-out"
+                          style={{
+                            background: 'radial-gradient(circle, hsl(271 91% 65% / 0.6) 0%, hsl(316 73% 69% / 0.4) 30%, transparent 70%)',
+                            left: mousePosition.x - 64,
+                            top: mousePosition.y - 64,
+                            filter: 'blur(20px)',
+                          }}
+                        />
+                      )}
+                      
+                      <Card className="relative p-6 bg-gradient-card border border-amethyst/20 hover:border-amethyst/40 transition-all duration-300 group hover:shadow-lg hover:shadow-amethyst/10 hover:scale-105 transform">
+                        <div className="flex items-start gap-4">
+                          <div className="p-2 rounded-lg bg-amethyst/10 group-hover:bg-amethyst/20 transition-colors group-hover:shadow-lg group-hover:shadow-amethyst/30">
+                            <feature.icon className="w-5 h-5 text-amethyst group-hover:text-amethyst-light transition-colors" />
+                          </div>
+                          <div className="flex-1">
+                            <h4 className="text-lg font-semibold text-foreground mb-2 group-hover:text-amethyst transition-colors">
+                              {feature.name}
+                            </h4>
+                            <p className="text-sm text-muted-foreground leading-relaxed group-hover:text-muted-foreground/80 transition-colors">
+                              {feature.description}
+                            </p>
+                          </div>
+                        </div>
+                        
+                        {/* Card Glow Effect on Hover */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-amethyst/5 via-pink-glow/5 to-amethyst/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg" />
+                      </Card>
                     </div>
-                  </Card>
-                ))}
+                  );
+                })}
               </div>
             </div>
           ))}
