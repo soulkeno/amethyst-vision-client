@@ -18,6 +18,9 @@ const buttonVariants = cva(
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
+        hero: "bg-gradient-primary text-primary-foreground hover:shadow-lg hover:shadow-amethyst/25 transition-all duration-300 animate-glow",
+        gaming: "bg-gaming-card border border-amethyst/30 text-foreground hover:bg-amethyst/10 hover:border-amethyst/50 transition-all duration-300",
+        download: "bg-amethyst text-primary-foreground hover:bg-amethyst-dark shadow-lg shadow-amethyst/30 hover:shadow-amethyst/50 transition-all duration-300 transform hover:scale-105",
       },
       size: {
         default: "h-10 px-4 py-2",
