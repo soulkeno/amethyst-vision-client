@@ -5,19 +5,25 @@ import heroBg from "@/assets/hero-bg.jpg";
 const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image with Overlay */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroBg})` }}
-      />
-      <div className="absolute inset-0 bg-gradient-to-b from-gaming-bg/40 via-gaming-bg/60 to-gaming-bg/90" />
+      {/* Enhanced Background with Purple-Pink Gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-deep via-gaming-bg to-pink-glow/20" />
+      <div className="absolute inset-0 bg-gradient-to-t from-gaming-bg/90 via-gaming-bg/40 to-transparent" />
       
-      {/* Floating Amethyst Crystals */}
+      {/* Animated Background Orbs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-6 h-6 bg-amethyst/30 rotate-45 animate-float" />
-        <div className="absolute top-40 right-20 w-4 h-4 bg-amethyst-light/40 rotate-12 animate-float" style={{ animationDelay: '1s' }} />
-        <div className="absolute bottom-32 left-20 w-8 h-8 bg-amethyst/20 rotate-45 animate-float" style={{ animationDelay: '2s' }} />
-        <div className="absolute bottom-20 right-32 w-5 h-5 bg-amethyst-light/30 rotate-12 animate-float" style={{ animationDelay: '0.5s' }} />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-amethyst/10 rounded-full blur-3xl animate-pulse-glow" />
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-pink-glow/10 rounded-full blur-3xl animate-pulse-glow" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-purple-deep/10 rounded-full blur-3xl animate-pulse-glow" style={{ animationDelay: '4s' }} />
+      </div>
+      
+      {/* Floating Amethyst Crystals - Enhanced */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-10 w-6 h-6 bg-amethyst/40 rotate-45 animate-float-slow shadow-lg shadow-amethyst/50" />
+        <div className="absolute top-40 right-20 w-4 h-4 bg-pink-glow/50 rotate-12 animate-float" style={{ animationDelay: '1s' }} />
+        <div className="absolute bottom-32 left-20 w-8 h-8 bg-amethyst/30 rotate-45 animate-float-slow shadow-lg shadow-amethyst/40" style={{ animationDelay: '2s' }} />
+        <div className="absolute bottom-20 right-32 w-5 h-5 bg-pink-glow/40 rotate-12 animate-float" style={{ animationDelay: '0.5s' }} />
+        <div className="absolute top-1/3 left-1/3 w-3 h-3 bg-purple-deep/60 rotate-45 animate-float" style={{ animationDelay: '3s' }} />
+        <div className="absolute bottom-1/3 right-1/3 w-7 h-7 bg-amethyst/20 rotate-12 animate-float-slow" style={{ animationDelay: '1.5s' }} />
       </div>
 
       <div className="relative z-10 container mx-auto px-4 text-center">
@@ -28,10 +34,16 @@ const Hero = () => {
             <span className="text-sm font-medium text-amethyst">Version 1.21</span>
           </div>
 
-          {/* Main Title */}
-          <h1 className="text-6xl md:text-8xl font-bold mb-6 bg-gradient-to-r from-amethyst-light via-amethyst to-amethyst-dark bg-clip-text text-transparent">
-            Amethyst Client
-          </h1>
+          {/* Main Title - Enhanced with Glow and Animations */}
+          <div className="relative group">
+            {/* Shine Effect Overlay */}
+            <div className="absolute inset-0 bg-gradient-shine bg-[length:200%_100%] animate-shine opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            
+            <h1 className="relative text-6xl md:text-8xl font-bold mb-6 bg-gradient-text bg-clip-text text-transparent animate-glow-intense hover:animate-pulse-glow transition-all duration-500 cursor-default select-none">
+              <span className="inline-block animate-float-slow">Amethyst</span>{" "}
+              <span className="inline-block animate-float-slow" style={{ animationDelay: '0.5s' }}>Client</span>
+            </h1>
+          </div>
           
           {/* Subtitle */}
           <p className="text-xl md:text-2xl text-muted-foreground mb-4 max-w-2xl mx-auto">
