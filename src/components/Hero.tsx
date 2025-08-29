@@ -39,14 +39,7 @@ const Hero = () => {
             {/* Shine Effect Overlay */}
             <div className="absolute inset-0 bg-gradient-shine bg-[length:200%_100%] animate-shine opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             
-            <h1 className="relative text-6xl md:text-8xl font-bold mb-6 text-white animate-glow-intense hover:animate-pulse-glow transition-all duration-500 cursor-default select-none"
-                style={{
-                  textShadow: '0 0 20px hsl(271 91% 65% / 0.8), 0 0 40px hsl(316 73% 69% / 0.6), 0 0 60px hsl(271 91% 65% / 0.4)',
-                  background: 'linear-gradient(135deg, hsl(271 91% 75%), hsl(316 73% 69%), hsl(271 91% 65%), hsl(260 100% 50%))',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text'
-                }}>
+            <h1 className="relative text-6xl md:text-8xl font-bold mb-6 bg-gradient-text bg-clip-text text-transparent animate-glow-intense hover:animate-pulse-glow transition-all duration-500 cursor-default select-none">
               <span className="inline-block animate-float-slow">Amethyst</span>{" "}
               <span className="inline-block animate-float-slow" style={{ animationDelay: '0.5s' }}>Client</span>
             </h1>
